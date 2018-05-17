@@ -1,0 +1,59 @@
+#:kivy 1.10.0
+
+#:import ThemeManager kivymd.theming.ThemeManager
+#:import MDNavigationDrawer kivymd.navigationdrawer.MDNavigationDrawer
+#:import NavigationLayout kivymd.navigationdrawer.NavigationLayout
+#:import NavigationDrawerToolbar kivymd.navigationdrawer.NavigationDrawerToolbar
+#:import Toolbar kivymd.toolbar.Toolbar
+#:import Window kivy.core.window.Window
+
+<NavDrawerItem@NavigationDrawerIconButton>:
+    icon: 'checkbox-blank-circle'
+
+NavigationLayout:
+    id: nav_layout
+    MDNavigationDrawer:
+        id: nav_drawer
+        title: "Test"
+        NavigationDrawerToolbar:
+            title: "Available Functions"
+        NavDrawerItem:
+            text: 'Radio'
+            on_release: app.print_this(self.text)
+        NavDrawerItem:
+            text: 'Music Player'
+            on_release: app.update_title(self.text)
+        NavDrawerItem:
+            text: 'Line-in'
+            on_release: app.update_title(self.text)
+        NavDrawerItem:
+            text: 'Bluetooth'
+            on_release: app.update_title(self.text)
+        NavDrawerItem:
+            text: 'AnchorLayoutContainer'
+            on_release: app.open_screen(self.text)
+        NavDrawerItem:
+            text: 'BoxLayoutContainer'
+            on_release: app.open_screen(self.text)
+        NavDrawerItem:
+            text: 'TestContainer'
+            on_release: app.open_screen(self.text)
+        NavDrawerItem:
+            text: 'testbutton'
+            on_release: app.open_screen(self.text)
+            on_release: app.print_this(self.text)
+    BoxLayout:
+        id: root_box
+        orientation: 'vertical'
+        Toolbar:
+            id: toolbar
+            title: 'Welcome'
+            md_bg_color: app.theme_cls.primary_color
+            background_palette: 'Primary'
+            background_hue: '500'
+            left_action_items: [['menu', lambda x: app.root.toggle_nav_drawer()]]
+        BoxLayout:
+            orientation: 'vertical'
+            id: container
+            
+    
